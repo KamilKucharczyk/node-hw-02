@@ -1,10 +1,17 @@
 import { updateContact } from "#service/index.js";
 
-async function updateContacts(req, res, next) {
+async function updateStatus(req, res, next) {
   const { contactId } = req.params;
-  const fields = req.body;
+  if (req.body.favorite === undefined) {
+    return res.status(400).json({
+      message: "missing field favorite",
+    });
+  }
+
+  const { favorite } = req.body;
+
   try {
-    const result = await updateContact(contactId, fields);
+    const result = await updateContact(contactId, { favorite });
     if (result) {
       return res.json({
         status: "success",
@@ -25,4 +32,4 @@ async function updateContacts(req, res, next) {
   }
 }
 
-export { updateContacts };
+export { updateStatus };

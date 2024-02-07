@@ -11,9 +11,12 @@
   "dependencies": {
     "cors": "2.8.5",
     "cross-env": "7.0.3",
+    "dotenv": "^16.4.1",
     "express": "4.17.1",
     "joi": "^17.12.0",
+    "mongoose": "^8.1.1",
     "morgan": "1.10.0",
+    "nanoid": "^5.0.5",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
@@ -25,5 +28,10 @@
     "eslint-plugin-promise": "5.2.0",
     "nodemon": "2.0.15"
   },
-  "type": "module"
+  "type": "module",
+  "imports": {
+    "#controllers/*": "./controllers/*",
+    "#routes/*": "./routes/*",
+    "#service/*": "./service/*"
+  }
 }
