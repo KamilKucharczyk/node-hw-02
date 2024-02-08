@@ -1,9 +1,10 @@
 import { removeContact } from "#service/index.js";
 
 async function deleteContacts(req, res, next) {
+  const user = req.user;
   const { contactId } = req.params;
   try {
-    const result = await removeContact(contactId);
+    const result = await removeContact(contactId, user._id);
     if (result) {
       return res.json({
         status: "success",
