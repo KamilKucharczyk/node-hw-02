@@ -1,6 +1,7 @@
 import { updateContact } from "#service/index.js";
 
 async function updateStatus(req, res, next) {
+  const user = req.user;
   const { contactId } = req.params;
   if (req.body.favorite === undefined) {
     return res.status(400).json({
@@ -11,7 +12,7 @@ async function updateStatus(req, res, next) {
   const { favorite } = req.body;
 
   try {
-    const result = await updateContact(contactId, { favorite });
+    const result = await updateContact(contactId, { favorite }, user._id);
     if (result) {
       return res.json({
         status: "success",

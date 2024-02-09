@@ -1,14 +1,20 @@
 import { getAllContacts } from "#service/index.js";
 
 async function indexContacts(req, res, next) {
+  const user = req.user;
+
   try {
     const results = await getAllContacts();
+    const newResults = results.filter((element) =>
+      element.owner.equals(user._id)
+    );
+
     return res.json({
       status: "succes",
       code: 200,
       data: {
-        contacts: results,
-        contactsCount: results.length,
+        contacts: newResults,
+        contactsCount: newResults.length,
       },
     });
   } catch (error) {
