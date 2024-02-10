@@ -1,3 +1,4 @@
+import getAvatar from "../handlers/getAvatar.js";
 import { Contact } from "./schemas/contact.js";
 import { User } from "./schemas/users.js";
 
