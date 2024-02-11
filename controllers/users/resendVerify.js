@@ -1,7 +1,7 @@
 import { getUserByEmail } from "#service/index.js";
 import { sendVerificationEmail } from "#handlers/sendVerificationEmail.js";
 
-async function resendVerifyEmail(req, res, next) {
+const resendVerifyEmail = async (req, res, next) => {
   const { email } = req.body;
 
   if (!email) {
@@ -30,6 +30,6 @@ async function resendVerifyEmail(req, res, next) {
     console.log(err);
     next(err);
   }
-}
+};
 
 export { resendVerifyEmail };
