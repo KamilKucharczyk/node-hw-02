@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 import { Schema } from "mongoose";
-import getAvatar from "../../handlers/getAvatar.js";
 
 const contacts = new Schema(
   {

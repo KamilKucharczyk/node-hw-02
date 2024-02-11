@@ -6,9 +6,7 @@ const uploadDir = path.join(process.cwd(), "tmp");
 const storeImage = path.join(process.cwd(), "public/avatars");
 
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, uploadDir);
-  },
+  destination: uploadDir,
   filename: (req, file, cb) => {
     cb(null, `${uuid()}${file.originalname}`);
   },

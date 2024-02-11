@@ -1,6 +1,8 @@
-import getAvatar from "../handlers/getAvatar.js";
-import { Contact } from "./schemas/contact.js";
+import { uuid } from "uuidv4";
 import { User } from "./schemas/users.js";
+import getAvatar from "#handlers/getAvatar.js";
+import { Contact } from "./schemas/contact.js";
+import { sendVerificationEmail } from "#handlers/sendVerificationEmail.js";
 
 const getAllContacts = async () => {
   return Contact.find();
@@ -36,9 +38,19 @@ const getUserById = async (id) => {
   return User.find({ _id: id });
 };
 
+const getUserByVerToken = async (token) => {
+  return User.findOne({ verificationToken: token });
+};
+
 const createUser = async ({ email, password }) => {
-  const newUser = new User({ email });
+  const verificationToken = uuid();
+  const newUser = new User({
+    email,
+    avatarURL: getAvatar(email),
+    verificationToken,
+  });
   await newUser.setPassword(password);
+  await sendVerificationEmail(email, verificationToken);
   await newUser.save();
   return newUser;
 };
@@ -58,4 +70,5 @@ export {
   createUser,
   updateUser,
   getUserById,
+  getUserByVerToken,
 };

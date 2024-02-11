@@ -18,10 +18,12 @@
     "jimp": "^0.22.10",
     "joi": "^17.12.0",
     "jsonwebtoken": "^9.0.2",
+    "mailgun-js": "^0.22.0",
     "mongoose": "^8.1.1",
     "morgan": "1.10.0",
     "multer": "^1.4.5-lts.1",
     "nanoid": "^5.0.5",
+    "nodemailer": "^6.9.9",
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
     "uuid": "^9.0.1"
@@ -40,6 +42,8 @@
     "#controllers/*": "./controllers/*",
     "#routes/*": "./routes/*",
     "#service/*": "./service/*",
-    "#middlewares/*": "./middlewares/*"
+    "#middlewares/*": "./middlewares/*",
+    "#handlers/*": "./handlers/*",
+    "#multerConfig/*": "./multerConfig/*"
   }
 }
